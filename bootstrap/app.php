@@ -14,7 +14,7 @@
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
-
+require_once __DIR__.'/env.php';
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

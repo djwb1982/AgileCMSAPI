@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    var_dump(Config::get('constants.ADMIN_NAME'));die;
-    return view('welcome');
-});
+Route::post('/', function () {
+    echo 3333;die;
+   // return view('welcome');
+})->middleware('request');

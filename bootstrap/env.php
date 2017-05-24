@@ -1,7 +1,7 @@
 <?php
 //域名配置
 $env_hosts = [
-    'local' => ['www.laravel.loc'],
+    'local' => ['127.0.0.1:8000','agilecms'],
     'develop' => ['www.laravel.dev'],
     'testing' => ['www.laravel.test'],
     'production' => ['www.laravel.com'],
@@ -27,6 +27,5 @@ if (empty($app_env) || empty($env_hosts[$app_env])) {
     die('[error] no environment');
 }
 //写入环境配置
-Dotenv::setEnvironmentVariable('APP_ENV', $app_env);
-Dotenv::setEnvironmentVariable('APP_HOST', $env_hosts[$app_env][0]);
-$app->loadEnvironmentFrom(env('APP_ENV') . '.env')->useEnvironmentPath(base_path('env'));
+$environment = getenv('DEV_ENV') ? '.' . getenv('DEV_ENV') : '';
+$app->loadEnvironmentFrom('.env'.$environment);
